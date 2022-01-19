@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+//@RestController
+@Controller
 public class AdminUserController {
     @Autowired
     AdminUserService adminUserService;
@@ -17,6 +18,11 @@ public class AdminUserController {
     @Autowired
     AdminRegisterRepository adminRegisterRepository;
 
+//    @RequestMapping("/login")
+//    public String login()
+//    {
+//        return "index";
+//    }
     @GetMapping("/all")
     public List<AdminRegister> adminRegister(){
        return adminRegisterRepository.findAll();
@@ -27,9 +33,12 @@ public class AdminUserController {
         return adminUserService.addAdminRegister(adminRegister);
     }
     @PostMapping("/checkuser/{email}/{password}")
-    public AdminRegister check(@PathVariable (name = "email") String email, @PathVariable (name = "password") String password)
+    public String check(@PathVariable (name = "email") String email, @PathVariable (name = "password") String password)
     {
-        AdminRegister adminRegister=new AdminRegister();
-        return adminUserService.checkAdmin(adminRegister,email,password);
+        return adminUserService.checkAdmin(email,password);
     }
+
+
+
+
 }

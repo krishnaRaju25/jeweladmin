@@ -1,6 +1,5 @@
 package com.thbs.jewellery.jewel.controller;
 
-import com.thbs.jewellery.jewel.model.AdminRegister;
 import com.thbs.jewellery.jewel.model.Category;
 import com.thbs.jewellery.jewel.model.Jewels;
 import com.thbs.jewellery.jewel.service.CategoryService;

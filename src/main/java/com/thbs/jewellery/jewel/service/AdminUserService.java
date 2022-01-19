@@ -13,7 +13,7 @@ public class AdminUserService {
         return adminRegisterRepository.save(adminRegister);
     }
 
-    public AdminRegister checkAdmin(AdminRegister adminRegister,String email,String password){
+    public String checkAdmin(String email,String password){
        // boolean password1=adminRegisterRepository.equals(password);
         if(adminRegisterRepository.existsById(email) && adminRegisterRepository.existsByPassword(password))
         {
@@ -21,8 +21,8 @@ public class AdminUserService {
         }else{
             System.out.print( "login unsuccessfull");
         }
+      return null;
 
-        return null;
     }
 
 }

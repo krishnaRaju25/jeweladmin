@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Optional;
 
 @Entity
 public class AdminUser {
@@ -19,6 +20,7 @@ public class AdminUser {
         this.email = email;
         this.password = password;
     }
+
 
     public String getEmail() {
         return email;
