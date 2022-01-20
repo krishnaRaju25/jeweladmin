@@ -13,9 +13,9 @@ import java.util.List;
 @Service
 public class JewelsService {
     @Autowired
-    JewelsRepository jewelsRepository;
+   private JewelsRepository jewelsRepository;
     @Autowired
-    CategoryRepository categoryRepository;
+    private   CategoryRepository categoryRepository;
     public List<Jewels> jewelslist(){
         return jewelsRepository.findAll();
     }

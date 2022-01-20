@@ -1,0 +1,35 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<meta charset="ISO-8859-1">
+<head>
+    <style>
+     .label{
+       width:10%;
+       display:inline-block;
+       margin:5px;
+     }
+     .input{
+       border-radius:5px;
+       height:30px;
+       margin-bottom:10px
+    }
+    .submit{
+       margin-left:10%;
+    }
+  </style>
+</head>
+<body>
+<h1>LOGIN FORM FOR JEWELLERY APP</h1>
+<form action="#" th:action="@{/login}" th:object="${adminUser}" method="post" >
+    <fieldset>
+        <label class="label">email</label>
+        <input class="input" type="text" th:field="*{email}"/><br/>
+        <label class="label">password</label>
+        <input class="input" type="password" th:field="*{password}"/><br/>
+        <button class="submit" type="submit">login</button>
+
+        <a th:href = "@{/register}"> register </a>
+
+    </fieldset>
+</form>
+</body>
+</html>

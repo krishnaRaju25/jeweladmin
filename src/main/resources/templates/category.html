@@ -1,0 +1,45 @@
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>welcome Admin Kindly add the product</h1>
+<form action="#" th:action="@{/category}" th:object="${category}" method="POST" >
+
+        <label class="label">products</label>
+        <input class="input" type="text" name="product" th:field="*{product}"/><br/>
+<br>
+
+        <button class="submit" type="submit">Register</button>
+<!--    if you submit c0nsider as action -->
+
+</form>
+
+<!-- <a th:href="@{/showFormForUpdate/{id}(id=${category.id})}" class="btn btn-primary">Update</a>-->
+<div>
+    DELETE BY PRODUCT NAME
+</div>
+<br>
+<!--<form action="#" th:action="@{/delete}" th:object="${category} method=get" >-->
+<!--   @delete to post mapping delete ////-->
+<!--    <label class="label">Product Name</label>-->
+<!--    <input class="input" type="text" name="product" th:field="*{product}"/><br/>-->
+<!--    <br>-->
+<!--    <button class="submit" type="submit">delete</button>  //category ear rng necklace -->
+    <tbody>
+
+    <tr th:each="category : ${category}">
+        <td th:text="${category.product}"></td>
+
+        <td><a href="" th:href="@{/admin/categories/delete/{product}(product=${category.product})}" class="btn btn-danger">Delete</a></td>
+<!--        <td><a href="" th:href="@{/admin/categories/update/{id}(id=${category.id})}" class="btn btn-warning">Update</a></td>-->
+
+    </tr>
+    </tbody>
+
+<!--</form>-->
+
+</body>
+</html>

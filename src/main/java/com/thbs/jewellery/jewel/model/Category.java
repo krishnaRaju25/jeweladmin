@@ -1,13 +1,15 @@
 package com.thbs.jewellery.jewel.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name="category")
 public class Category {
     @Id
-    private String product;
-
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @Column(name="product")
+    private String product; //earring,gold
     public Category() {
     }
 

@@ -1,0 +1,39 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<meta charset="ISO-8859-1">
+<head>
+    <styLe>
+     .label{
+       width:10%;
+       display:inline-block;
+       margin:5px;
+     }
+     .input{
+       border-radius:5px;
+       height:30px;
+       margin-bottom:10px
+    }
+    .submit{
+       margin-left:10%;
+    }
+  </style>
+</head>
+<h1>Registration Form</h1>
+<form action="#" th:action="@{/register}" th:object="${adminUser}" method="POST" >
+    <fieldset>
+        <label class="label">email</label>
+        <input class="input" type="text" name="email" th:field="*{email}"/><br/>
+
+        <label class="label">password</label>
+        <input class="input"  type="password" name="password" th:field="*{password}"/><br/>
+
+        <label class="label">mobile</label>
+        <input class="input"  type="text" name="mobile" th:field="*{mobile}"/><br/>
+
+        <label class="label">name</label>
+        <input class="input"  type="text" name="name" th:field="*{name}"/><br/>
+
+        <button class="submit" type="submit">Register</button>
+    </fieldset>
+</form>
+</html>
+
