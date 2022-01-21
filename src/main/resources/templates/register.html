@@ -1,39 +1,56 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <meta charset="ISO-8859-1">
 <head>
-    <styLe>
+    <style>
      .label{
-       width:10%;
-       display:inline-block;
-       margin:5px;
+      width: 9%;
+     display: inline-block;
+     margin: 11px;
+    font-family: cursive;
+    font-size: larger;
      }
+        body {
+  background-color: azure;
+
+}
      .input{
-       border-radius:5px;
-       height:30px;
-       margin-bottom:10px
+           border-radius: 8px;
+    height: 42px;
+    margin-bottom: 14px;
     }
+
     .submit{
-       margin-left:10%;
+    background-color: aquamarine;
+    padding: 10;
+    border: revert;
+    border-radius: 10px;
+    font-family: cursive;
     }
   </style>
 </head>
-<h1>Registration Form</h1>
-<form action="#" th:action="@{/register}" th:object="${adminUser}" method="POST" >
-    <fieldset>
-        <label class="label">email</label>
+<div style="padding:40px;">
+<h1 style="text-align:center">Jewellery Admin Registration Form</h1>
+
+<div style="text-align:center">
+    <form action="#" th:action="@{/register}" th:object="${adminUser}" method="POST" >
+
+        <label class="label">Email:</label>
         <input class="input" type="text" name="email" th:field="*{email}"/><br/>
 
-        <label class="label">password</label>
+        <label class="label">Password:</label>
         <input class="input"  type="password" name="password" th:field="*{password}"/><br/>
 
-        <label class="label">mobile</label>
+        <label class="label">Mobile:</label>
         <input class="input"  type="text" name="mobile" th:field="*{mobile}"/><br/>
 
-        <label class="label">name</label>
+        <label class="label">Name:</label>
         <input class="input"  type="text" name="name" th:field="*{name}"/><br/>
 
         <button class="submit" type="submit">Register</button>
-    </fieldset>
-</form>
+        <a th:href = "@{/login}"> Back to login </a>
+
+    </form>
+</div>
+</div>
 </html>
 

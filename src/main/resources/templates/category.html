@@ -3,23 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+          crossorigin="anonymous">
 </head>
+<style>
+     .label{
+      width: 14%;
+     display: inline-block;
+     margin: 11px;
+    font-family: cursive;
+    font-size: larger;
+     }
+     .input{
+           border-radius: 8px;
+    height: 42px;
+    margin-bottom: 14px;
+    }
+    .head{
+        padding: 8px;
+    padding-left: 20;
+    margin-left: 240px;
+    }
+     body {
+  background-color: azure;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+    .submit{
+    background-color: aquamarine;
+    padding: 10;
+    border: revert;
+    border-radius: 10px;
+    font-family: cursive;
+    }
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 40%;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+}
+
+  </style>
 <body>
-<h1>welcome Admin Kindly add the product</h1>
-<form action="#" th:action="@{/category}" th:object="${category}" method="POST" >
+<div class="head ">
+    <div class="row col-12">
+    <div class="col-10" style="margin-bottom:14px;">
+<h1>welcome Admin Kindly add the product</h1> </div>
+    <div class="col-2">
+    <a th:href = "@{/login}"  class="btn btn-success"> logout</a>
+     </div>
+        </div>
+    <form action="#" th:action="@{/category}" th:object="${category}" method="POST" >
 
         <label class="label">products</label>
         <input class="input" type="text" name="product" th:field="*{product}"/><br/>
 <br>
 
+    <label class="label">name</label>
+    <input class="input" type="text" name="product" th:field="*{name}"/><br/>
+    <br>
+
+    <label class="label">price</label>
+    <input class="input" type="text" name="product" th:field="*{price}"/><br/>
+    <br>
+
+    <label class="label">gram</label>
+    <input class="input" type="text" name="product" th:field="*{grams}"/><br/>
+    <br>
+
+    <label class="label">productType</label>
+    <input class="input" type="text" name="product" th:field="*{productType}"/><br/>
+    <br>
+
+
         <button class="submit" type="submit">Register</button>
 <!--    if you submit c0nsider as action -->
 
 </form>
-
+</div>
 <!-- <a th:href="@{/showFormForUpdate/{id}(id=${category.id})}" class="btn btn-primary">Update</a>-->
-<div>
-    DELETE BY PRODUCT NAME
+<div align="center">
+    <h1>LISTING ALL THE AVAILABLE PRODUCT</h1>
 </div>
 <br>
 <!--<form action="#" th:action="@{/delete}" th:object="${category} method=get" >-->
@@ -28,17 +103,59 @@
 <!--    <input class="input" type="text" name="product" th:field="*{product}"/><br/>-->
 <!--    <br>-->
 <!--    <button class="submit" type="submit">delete</button>  //category ear rng necklace -->
-    <tbody>
+<div class=" row card col-12" th:each="cat : ${listCategory}" style="margin-left: 110px; margin-bottom: 50px;"  >
+    <div class="container col-8 m-10 p-10" style="padding-top:30px;"  >
+        <h4 th:text="${cat.product}"></h4>
+        <div class="row col-12">
+        <div class="col-4 p-0">Name :</div>
+         <div class="col-8" th:text="${cat.name}"></div>
+        </div>
+        <div class="row col-12">
+            <div class="col-4 p-0">Price :</div>
+            <div class="col-8" th:text="${cat.price}"></div>
+        </div>
+        <div class="row col-12">
+            <div class="col-4 p-0">Grams:</div>
+            <div class="col-8" th:text="${cat.grams}"></div>
+        </div>
+        <div class="row col-12">
+            <div class="col-4 p-0">Type:</div>
+            <div class="col-8" th:text="${cat.productType}"></div>
+        </div>
 
-    <tr th:each="category : ${category}">
-        <td th:text="${category.product}"></td>
+        <div class="row"><a href="" th:href="@{/category/delete(product=${cat.product})}" class="btn btn-danger">Delete</a>
+           <div style="margin-left:12px;"></div>
+            <a href="" th:href="@{/category/update(product=${cat.product})}" class="btn btn-warning">Update</a></div>
+    </div>
+    </div>
+</div>
+<!--<table class="table table-bordered table-striped">-->
 
-        <td><a href="" th:href="@{/admin/categories/delete/{product}(product=${category.product})}" class="btn btn-danger">Delete</a></td>
-<!--        <td><a href="" th:href="@{/admin/categories/update/{id}(id=${category.id})}" class="btn btn-warning">Update</a></td>-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--        <th class="label">product</th>-->
+<!--        <th class="label">name</th>-->
+<!--        <th class="label">price</th>-->
+<!--        <th class="label">grams</th>-->
+<!--        <th class="label">productType</th>-->
+<!--        <th></th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--    <tr th:each="cat : ${listCategory}" >-->
 
-    </tr>
-    </tbody>
+<!--        <td th:text="${cat.product}"></td>-->
+<!--        <td th:text="${cat.name}"></td>-->
+<!--        <td th:text="${cat.price}"></td>-->
+<!--        <td th:text="${cat.grams}"></td>-->
+<!--        <td th:text="${cat.productType}"></td>-->
 
+<!--        <td><a href="" th:href="@{/category/delete(product=${cat.product})}" class="btn btn-danger">Delete</a></td>-->
+<!--        <td><a href="" th:href="@{/category/update(product=${cat.product})}" class="btn btn-warning">Update</a></td>-->
+
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--</table>-->
 <!--</form>-->
 
 </body>

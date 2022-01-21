@@ -10,9 +10,6 @@ public class Jewels {
     private int grams;
     private String productType;
 
-    @ManyToOne
-    @JoinColumn(name = "product")
-    Category category;
 
     public Jewels() {
     }
@@ -49,13 +46,6 @@ public class Jewels {
         this.productType = productType;
     }
 
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
 
     @Override
     public String toString() {
@@ -64,7 +54,6 @@ public class Jewels {
         sb.append(", price=").append(price);
         sb.append(", grams=").append(grams);
         sb.append(", productType='").append(productType).append('\'');
-        sb.append(", category=").append(category);
         sb.append('}');
         return sb.toString();
     }

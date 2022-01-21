@@ -72,11 +72,7 @@ public class AdminUserController {
     public String register(@ModelAttribute("adminUser") AdminUser adminUser)
      {
          adminUserService.addAdmin(adminUser);
-         return "redirect:/";
+         return "redirect:/login";
      }
-
-
-
-
 
 }

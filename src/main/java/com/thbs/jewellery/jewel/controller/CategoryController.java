@@ -3,19 +3,25 @@ package com.thbs.jewellery.jewel.controller;
 import com.thbs.jewellery.jewel.model.AdminUser;
 import com.thbs.jewellery.jewel.model.Category;
 import com.thbs.jewellery.jewel.model.Jewels;
+import com.thbs.jewellery.jewel.repository.CategoryRepository;
 import com.thbs.jewellery.jewel.service.CategoryService;
 import com.thbs.jewellery.jewel.service.JewelsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
-
+@Transactional //delete custom
 @Controller
 public class CategoryController {
     @Autowired
-    CategoryService categoryService;
+   private CategoryService categoryService;
+    @Autowired
+   private  CategoryRepository categoryRepository;
     @Autowired
     JewelsService jewelsService;
 
@@ -54,6 +60,7 @@ public class CategoryController {
     {
         ModelAndView mv=new ModelAndView("category");
         mv.addObject("category",new Category());
+        mv.addObject("listCategory",categoryService.categories());
         return mv;
     }
 
@@ -61,19 +68,23 @@ public class CategoryController {
     public String category(@ModelAttribute("category") Category category)
     {
         categoryService.addCategory(category);
-        return "category";
+        return "redirect:/category";
     }
 
-    @GetMapping("/admin/categories/delete/{product}")
-    public String deleteCategory(@PathVariable String product) //post giving category(user will give data)
+
+   @RequestMapping("/category/delete")
+    public String delete(@RequestParam(name="product") String product)
+   {
+       categoryService.deleteById(product);
+       return "redirect:/category";
+   }
+    @RequestMapping("/category/update")
+    public String update(@RequestParam(name="product") String product,Model model)
     {
-//        ModelAndView modelAndView=new ModelAndView("category");
-//        modelAndView.addObject("category",new Category()); //
-        categoryService.deleteById(product);
-        return "index";
+
+         Category category= categoryService.update(product);
+         model.addAttribute("category",category);
+         return "updateproduct";
     }
-
-
-
 
 }

@@ -2,34 +2,51 @@
 <meta charset="ISO-8859-1">
 <head>
     <style>
+    body {
+  background-color: azure;
+  }
      .label{
-       width:10%;
-       display:inline-block;
-       margin:5px;
+      width: 9%;
+     display: inline-block;
+     margin: 11px;
+    font-family: cursive;
+    font-size: larger;
      }
      .input{
-       border-radius:5px;
-       height:30px;
-       margin-bottom:10px
+           border-radius: 8px;
+    height: 42px;
+    margin-bottom: 14px;
     }
+
     .submit{
-       margin-left:10%;
+    background-color: aquamarine;
+    padding: 10;
+    border: revert;
+    border-radius: 10px;
+    font-family: cursive;
     }
+    button.submit {
+    padding: 12px;
+    padding-bottom: 10;
+    padding-left: 20;
+    padding-right: 20;
+}
   </style>
 </head>
 <body>
-<h1>LOGIN FORM FOR JEWELLERY APP</h1>
+<div style="padding:50px;">
+<center>
+<h1>ADMIN LOGIN JEWELLERY </h1>
 <form action="#" th:action="@{/login}" th:object="${adminUser}" method="post" >
-    <fieldset>
-        <label class="label">email</label>
+        <label class="label">Email:</label>
         <input class="input" type="text" th:field="*{email}"/><br/>
-        <label class="label">password</label>
+        <label class="label">Password:</label>
         <input class="input" type="password" th:field="*{password}"/><br/>
         <button class="submit" type="submit">login</button>
 
-        <a th:href = "@{/register}"> register </a>
-
-    </fieldset>
+        <a th:href = "@{/register}"> Register </a>
 </form>
+</center>
+</div>
 </body>
 </html>
